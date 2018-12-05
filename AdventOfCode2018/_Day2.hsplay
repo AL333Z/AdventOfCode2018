@@ -1,0 +1,31 @@
+-- Haskell Playground 1.0
+inputs
+
+compute "abcdef" == None
+compute "bababc" == Both
+compute "abbcde" == Two
+compute "abcccd" == Three
+compute "aabcdd" == Two
+compute "abcdee" == Two
+compute "ababab" == Three
+
+occurences <$> inputs 
+
+(count Both) <$> occurences <$> inputs 
+(count Two) <$> occurences <$> inputs 
+(count Three) <$> occurences <$> inputs 
+(count None) <$> occurences <$> inputs 
+
+-- part 1
+checksum <$> occurences <$> inputs 
+
+-- part 2
+
+diff "abcde" "axcye" == 2
+diff "fghij" "fguij" == 1
+
+("fghij" `List.intersect` "fguij") == "fgij"
+
+allDiffs <$> inputs 
+
+theId <$> allDiffs <$> inputs 

@@ -1,0 +1,7 @@
+-- Haskell Playground 1.0
+-- part 1
+length <$> overlap <$> inputs
+
+-- part2
+do claims <- inputs
+   return $ notOverlapped (overlap claims) claims

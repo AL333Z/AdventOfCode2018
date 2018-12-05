@@ -1,0 +1,9 @@
+-- Haskell Playground 1.0
+-- list of inputs
+inputs
+
+-- cycled frequencies
+frequencies <$> cycledInputs
+
+-- 
+firstDuplicate <$> frequencies <$> cycledInputs

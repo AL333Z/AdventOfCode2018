@@ -1,0 +1,27 @@
+-- Haskell Playground 1.0
+let sample = [ (Shift (parseTimestamp "1518-11-01 00:00") 10), 
+               (Turn (parseTimestamp "1518-11-01 00:05")), 
+               (Turn (parseTimestamp "1518-11-01 00:25")), 
+               (Turn (parseTimestamp "1518-11-01 00:30")), 
+               (Turn (parseTimestamp "1518-11-01 00:55")), 
+
+               (Shift (parseTimestamp "1518-11-02 00:00") 99), 
+               (Turn (parseTimestamp "1518-11-02 00:40")), 
+               (Turn (parseTimestamp "1518-11-02 00:50")), 
+
+               (Shift (parseTimestamp "1518-11-03 00:00") 10), 
+               (Turn (parseTimestamp "1518-11-03 00:24")), 
+               (Turn (parseTimestamp "1518-11-03 00:29")), 
+
+               (Shift (parseTimestamp "1518-11-04 00:00") 99), 
+               (Turn (parseTimestamp "1518-11-04 00:36")), 
+               (Turn (parseTimestamp "1518-11-04 00:46")),
+               
+               (Shift (parseTimestamp "1518-11-05 00:00") 99), 
+               (Turn (parseTimestamp "1518-11-05 00:45")), 
+               (Turn (parseTimestamp "1518-11-05 00:55"))
+             ]
+
+part1 $ best $ totals $ sleptMinutes $ partitionEntries sample
+
+part1 <$> best <$> totals <$> sleptMinutes <$> partitionEntries <$> sortedInputs
