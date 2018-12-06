@@ -25,3 +25,10 @@ let sample = [ (Shift (parseTimestamp "1518-11-01 00:00") 10),
 part1 $ best $ totals $ sleptMinutes $ partitionEntries sample
 
 part1 <$> best <$> totals <$> sleptMinutes <$> partitionEntries <$> sortedInputs
+
+sleptMinutes <$> partitionEntries <$> sortedInputs
+
+part2 $ frequencies $ sleptMinutes $ partitionEntries $ sample
+
+
+part2 <$> frequencies <$>  sleptMinutes <$>  partitionEntries <$> sortedInputs

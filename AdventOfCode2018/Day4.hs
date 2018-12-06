@@ -88,12 +88,13 @@ sleptMinutes m = fmap computeSleptMinutes m
         asleepMin = (todMin (timeToTimeOfDay (utctDayTime asleep)))
         awakeMin = (todMin (timeToTimeOfDay (utctDayTime awake)))
 
+
 -- Map id (minutes, total)
 totals :: Map Int [Int] ->  Map Int ([Int], Int)
 totals m = fmap (\x -> (x, length x)) m
 
 -- (id, (minutes, total))
-best :: Map Int ([Int], Int) -> (Int, ([Int], Int))
+best :: Map Int (a, Int) -> (Int, (a, Int))
 best m = (found, m M.! found)
   where
     found = (getMaxFromMap m) List.!! 0
@@ -106,13 +107,22 @@ best m = (found, m M.! found)
             | (snd v) < (snd u)     = go ks     (Just u) rest
             | (snd v) > (snd u)     = go [k]    (Just v) rest
             | otherwise = go (k:ks) (Just v) rest
-
 part1 :: (Int, ([Int], Int)) -> Int
 part1 (id, (xs, _)) = id * mostFreq
   where
     mostFreq = mostCommon xs
 
-    mostCommon :: Ord a => [a] -> a
-    mostCommon = snd . maximum . map (\xs -> (length xs, head xs)) . List.group . List.sort
+mostCommon :: Ord a => [a] -> a
+mostCommon = snd . maximum . map (\xs -> (length xs, head xs)) . List.group . List.sort
 
+countOcc :: Eq a => a -> [a] -> Int
+countOcc x = length . filter (x==)
 
+-- id, (minute, freq)
+frequencies :: Map Int [Int] ->  Map Int (Int, Int)
+frequencies m = fmap (\xs -> (mostCommon xs, countOcc (mostCommon xs) xs)) m
+
+part2 :: Map Int (Int, Int) -> Int
+part2 m = gId * bestMinute
+  where
+    (gId, (bestMinute, _)) = best m

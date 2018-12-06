@@ -9,6 +9,7 @@ data-files:
     day4-input.txt
     day1-input.txt
     day2-input.txt
+    day5-input.txt
 x-ghc-framework-version: 8.0.2-9.6-1
 x-last-ide-version: HfM1.6.0
 
@@ -22,6 +23,7 @@ executable AdventOfCode2018
         containers -any
     default-language: Haskell2010
     other-modules:
+        Day5
         Day4
         Day2
         Day3
