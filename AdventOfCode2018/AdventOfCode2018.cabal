@@ -5,10 +5,12 @@ build-type: Simple
 license: AllRightsReserved
 stability: experimental
 data-files:
-    day3-input.txt
     day4-input.txt
+    day3-input.txt
     day1-input.txt
     day2-input.txt
+    day6-input.txt
+    day7-input.txt
     day5-input.txt
 x-ghc-framework-version: 8.0.2-9.6-1
 x-last-ide-version: HfM1.6.0
@@ -16,15 +18,18 @@ x-last-ide-version: HfM1.6.0
 executable AdventOfCode2018
     main-is: Day1.hs
     build-depends:
+        unordered-containers -any,
+        containers -any,
         split -any,
         base -any,
         parsec -any,
-        time -any,
-        containers -any
+        time -any
     default-language: Haskell2010
     other-modules:
-        Day5
+        Day3
+        Day6
+        Day7
         Day4
         Day2
-        Day3
+        Day5
 

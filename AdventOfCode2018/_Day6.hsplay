@@ -1,0 +1,4 @@
+-- Haskell Playground 1.0
+--part1 <$> readFile  "day6-input.txt"
+
+--part2 <$> readFile  "day6-input.txt"
